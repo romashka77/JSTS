@@ -1,72 +1,143 @@
-﻿//Функция abs() возвращает абсолютное значение числа:
-var x = -25;
-document.write(Math.abs(x)); // 25
-var y = 34;
-document.write(Math.abs(y)); // 34
+﻿//Копирование массива. slice()
+var users = ["Tom", "Sam", "Bill"];
+console.log(users);             //  ["Tom", "Sam", "Bill"]
+var people = users.slice();     //  глубокое копирование
 
-//Функции min() и max() возвращают соответственно минимальное и максимальное значение из набора чисел:
-var max = Math.max(19, 45, 0); // 45
-var min = Math.min(33, 24, 34); // 24
+people[1] = "Mike";             //  изменяем второй элемент
+console.log(users);             //  ["Tom", "Sam", "Bill"]
+console.log(people);            //  ["Tom", "Mike", "Bill"]
+//Также метод slice() позволяет скопировать часть массива:
+var users = ["Tom", "Sam", "Bill", "Alice", "Kate"];
+var people = users.slice(1, 4);
+console.log(people);        // ["Sam", "Bill", "Alice"]
 
-//Функция ceil() округляет число до следующего наибольшего целого числа:
-var x = Math.ceil(9.2); // 10
-var y = Math.ceil(-5.9); // -5
+//Метод push() добавляет элемент в конец массива:
+var fruit = [];
+fruit.push("яблоки");
+fruit.push("груши");
+fruit.push("сливы");
+fruit.push("вишня", "абрикос");
 
-//Функция floor() округляет число до следующего наименьшего целого числа:
-var x = Math.floor(9.2); // 9
-var y = Math.floor(-5.9); // -6
+document.write("В массиве fruit " + fruit.length + " элемента: <br/>");
+document.write(fruit); // яблоки,груши,сливы,вишня,абрикос
 
-//Функция round() округляет число до следующего наименьшего целого числа, если его десятичная часть меньше 0.5. Если же десятичная часть равна или больше 0.5, то округление идет до ближайшего наибольшего целого числа:
-var x = Math.round(5.5); // 6
-var y = Math.round(5.4); // 5
-var z = Math.round(-5.4); // -5
-var n = Math.round(-5.5); // -5
-var m = Math.round(-5.6); // -6
-console.log(x);
-console.log(y);
-console.log(z);
-console.log(n);
+//Метод pop() удаляет последний элемент из массива:
+var fruit = ["яблоки", "груши", "сливы"];
 
-//Функция random() возвращает случайное число с плавающей точкой их диапазона от 0 до 1:
-var x = Math.random();
+var lastFruit = fruit.pop(); // извлекаем из массива последний элемент
+document.write(lastFruit + "<br/>");
+document.write("В массиве fruit " + fruit.length + " элемента: <br/>");
+for (var i = 0; i < fruit.length; i++)
+    document.write(fruit[i] + "<br/>");
+//сливы
+//В массиве fruit 2 элемента:
+//яблоки
+//груши
 
-//Функция pow() возвращает число в определенной степени. Например, возведем число 2 в степень 3:
-var x = Math.pow(2, 3); // 8
+//Метод shift() извлекает и удаляет первый элемент из массива:
+var fruit = ["яблоки", "груши", "сливы"];
 
-//Функция sqrt() возвращает квадратный корень числа:
-var x = Math.sqrt(121); // 11
-var y = Math.sqrt(9); // 3
-var z = Math.sqrt(20); // 4.47213595499958
+var firstFruit = fruit.shift();
+document.write(firstFruit + "<br/>");
+document.write("В массиве fruit " + fruit.length + " элемента: <br/>");
+for (var i = 0; i < fruit.length; i++)
+    document.write(fruit[i] + "<br/>");
+//яблоки
+//В массиве fruit 2 элемента:
+//груши
+//сливы
 
-//Функция log() возвращает натуральный логарифм числа:
-var x = Math.log(1); // 0
-var z = Math.log(10); // 2.302585092994046
+//Метод unshift() добавляет новый элемент в начало массива:
+var fruit = ["яблоки", "груши", "сливы"];
+fruit.unshift("абрикосы");
+document.write(fruit);
+//абрикосы, яблоки, груши, сливы
 
-//Целый ряд функций представляют тригонометрические функции: sin() (вычисляет синус угла), cos() (вычисляет косинус угла), tan() (вычисляет тангенс угла).
-var x = Math.sin(90); // 0.8939966636005579
-var y = Math.cos(0); // 1
-var z = Math.tan(45); // 1.6197751905438615
+//Метод splice() удаляет элементы с определенного индекса.Например, удаление элементов с третьего индекса:
+var users = ["Tom", "Sam", "Bill", "Alice", "Kate"];
+var deleted = users.splice(3);
+console.log(deleted);       // [ "Alice", "Kate" ]
+console.log(users);         // [ "Tom", "Sam", "Bill" ]
+//Дополнительная версия метода позволяет задать конечный индекс для удаления. Например, удалим с первого по третий индекс:
+var users = ["Tom", "Sam", "Bill", "Alice", "Kate"];
+var deleted = users.splice(1, 3);
+console.log(deleted);       // [ "Sam", "Bill", "Alice" ]
+console.log(users);         // [ "Tom", "Kate" ]
+//Еще одна версия метода splice позволяет вставить вместо удаляемых элементов новые элементы:
+var users = ["Tom", "Sam", "Bill", "Alice", "Kate"];
+var deleted = users.splice(1, 3, "Ann", "Bob");
+console.log(deleted);       // [ "Sam", "Bill", "Alice" ]
+console.log(users);         // [ "Tom", "Ann", "Bob", "Kate" ]
 
-//Функция asin() вычисляет арксинус числа, acos - арккосинус, а atan() - арктангенс числа:
-var x = Math.asin(0.9); // 1.1197695149986342
-var y = Math.acos(1); // 1
-var z = Math.atan(1); // 0.7853981633974483
+//Метод concat() служит для объединения массивов:
+var fruit = ["яблоки", "груши", "сливы"];
+var vegetables = ["помидоры", "огурцы", "картофель"];
+var products = fruit.concat(vegetables);
+for (var i = 0; i < products.length; i++)
+    document.write(products[i] + "<br/>");
 
-//Константы
-//Кроме методов объект Math также определяет набор встроенных констант, которые можно использовать в различных вычислениях:
+//Метод join() объединяет все элементы массива в одну строку:
+var fruit = ["яблоки", "груши", "сливы", "абрикосы", "персики"];
+var fruitString = fruit.join(", ");
+document.write(fruitString);
 
-//Math.PI(число PI): 3.141592653589793
+//Метод sort() сортирует массив по возрастанию:
+var fruit = ["яблоки", "груши", "сливы", "абрикосы", "персики"];
+fruit.sort();
+for (var i = 0; i < fruit.length; i++)
+    document.write(fruit[i] + "<br/>");
 
-//Math.SQRT2(квадратный корень из двух): 1.4142135623730951
+//Метод reverse() переворачивает массив задом наперед:
+var fruit = ["яблоки", "груши", "сливы", "абрикосы", "персики"];
+fruit.reverse();
+for (var i = 0; i < fruit.length; i++)
+    document.write(fruit[i] + "<br/>");
+//В сочетании с методом sort() можно отсортировать массив по убыванию:
+var fruit = ["яблоки", "груши", "сливы", "абрикосы", "персики"];
+fruit.sort().reverse();
 
-//Math.SQRT1_2(половина от квадратного корня из двух): 0.7071067811865476
+//Методы indexOf() и lastIndexOf() возвращают индекс первого и последнего включения элемента в массиве. Например:
+var fruit = ["яблоки", "груши", "сливы", "яблоки", "груши"];
+var firstIndex = fruit.indexOf("яблоки");
+var lastIndex = fruit.lastIndexOf("яблоки");
+var otherIndex = fruit.indexOf("вишни");
+document.write(firstIndex); // 0
+document.write(lastIndex);  // 3
+document.write(otherIndex); // -1
 
-//Math.E(число e или число Эйлера): 2.718281828459045
+//Метод every() проверяет, все ли элементы соответствуют определенному условию:
+var numbers = [1, -12, 8, -4, 25, 42];
+function condition(value, index, array) {
+    var result = false;
+    if (value > 0) {
+        result = true;
+    }
+    return result;
+};
+var passed = numbers.every(condition);
+document.write(passed); // false
+//В метод every() в качестве параметра передается функция, представляющая условие. Эта функция принимает три параметра:
+function condition(value, index, array) { }
+//Параметр value представляет текущий перебираемый элемент массива, параметр index представляет индекс этого элемента, а параметр array передает ссылку на массив.
+//В итоге, когда происходит вызов метода numbers.every(condition) он перебирает все элементы массива numbers и по очереди передает их в функцию condition. Если эта функция возвращает значение true для всех элементов, то и метод every() возвращает true. Если хотя бы один элемент не соответствует условию, то метод every() возвращает значение false.
 
-//Math.LN2(натуральный логарифм числа 2): 0.6931471805599453
+//Метод some() похож на метод every(), только он проверяет, соответствует ли хотя бы один элемент условию. И в этом случае метод some() возвращает true. Если элементов, соответствующих условию, в массиве нет, то возвращается значение false:
 
-//Math.LN10(натуральный логарифм числа 10): 2.302585092994046
+//Метод filter(), как some() и every(), принимает функцию условия.Но при этом возвращает массив тех элементов, которые соответствуют этому условию:
 
-//Math.LOG2E(двоичный логарифм числа e): 1.4426950408889634
+//Методы forEach() и map() осуществляют перебор элементов и выполняют с ними определенный операции. Например, для вычисления квадратов чисел в массиве можно использовать следующий код:
+var numbers = [1, 2, 3, 4, 5, 6];
+function square(value, index, array) {
 
-//Math.LOG10E(десятичный логарифм числа e): 0.4342944819032518
+    var result = value * value;
+    document.write("Квадрат числа " + value + " равен " + result + "<br/>");
+};
+numbers.forEach(square);
+//Метод map() похож на метод forEach, он также в качестве параметра принимает функцию, с помощью которой выполняются операции над перебираемыми элементами массива, но при этом метод map() возвращает новый массив с результатами операций над элементами массива.
+var numbers = [1, 2, 3, 4, 5, 6];
+function square(value, index, array) {
+
+    return result = value * value;
+};
+var squareArray = numbers.map(square);
+document.write(squareArray);
