@@ -1,15 +1,9 @@
-﻿//Остановка выполнения события
-//С помощью метода preventDefault() объекта Event мы можем остановить дальнейшее выполнение события.
-function linkHandler(e) {
-
-    var date = new Date();
-    var hour = date.getHours();
-    console.log(hour);
-    if (hour < 12) {
-
-        e.preventDefault();
-        document.write("После 12 переход запрещен");
-    }
+﻿function print_object(obj) {
+    var res = '<ul>';
+    for (var i in obj)
+        res += '<li><b>' + i + '</b>:' + obj[i] + '</li>';
+    res += '</ul>';
+    document.write(res);
 }
-var link = document.getElementById("rect");
-link.addEventListener("click", linkHandler);
+
+print_object(document.querySelector('#rect'));
