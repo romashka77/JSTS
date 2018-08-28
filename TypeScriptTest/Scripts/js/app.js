@@ -1,6 +1,15 @@
-﻿var strSum = prompt("Введите сумму вклада", 1000);
-    var strPercent = prompt("Введите процентную ставку", 10);
-    var sum = parseInt(strSum);
-    var procent = parseInt(strPercent);
-    sum = sum + sum * procent / 100;
-    alert("После начисления процентов сумма вклада составит: " + sum);
+﻿class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    static nameToUpper(person) {
+        return person.name.toUpperCase();
+    }
+    display() {
+        console.log(this.name, this.age);
+    }
+}
+let tom = new Person("Tom Soyer", 34);
+let personName = Person.nameToUpper(tom);
+console.log(personName);        // TOM SOYER
