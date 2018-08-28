@@ -5,11 +5,11 @@ function linkHandler(e) {
     var date = new Date();
     var hour = date.getHours();
     console.log(hour);
-    if (hour > 12) {
+    if (hour < 12) {
 
         e.preventDefault();
         document.write("После 12 переход запрещен");
     }
 }
-var link = document.getElementById("link");
+var link = document.getElementById("rect");
 link.addEventListener("click", linkHandler);
