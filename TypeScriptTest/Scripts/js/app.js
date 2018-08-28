@@ -1,17 +1,17 @@
-﻿var clicks = 0;
-function handlerOne(e) {
+﻿function handler(event) {
 
-    alert(e.type);
-}
-function handlerTwo(e) {
+    console.log("Тип события: " + event.type);
 
-    clicks++;
-    var newNode = document.createElement("p");
-    newNode.textContent = "произошло нажатие " + clicks;
-    document.body.appendChild(newNode);
+    console.log(event.target);
+    event.target.style.backgroundColor = "red";
 }
 var rect = document.getElementById("rect");
-// прикрепляем первый обработчик
-rect.addEventListener("click", handlerOne);
-// прикрепляем второй обработчик
-rect.addEventListener("click", handlerTwo);
+rect.addEventListener("click", handler);
+//bubbles: возвращает true, если событие является восходящим.Например, если событие возникло на вложенном элементе, то оно может быть обработано на родительском элементе.
+//cancelable: возвращает true, если можно отменить стандартную обработку события
+//currentTarget: определяет элемент, к которому прикреплен обработчик события
+//defaultPrevented: возвращает true, если был вызван у объекта Event метод preventDefault()
+//eventPhase: определяет стадию обработки события
+//target: указывает на элемент, на котором было вызвано событие
+//timeStamp: хранит время возникновения события
+//type: указывает на имя события
