@@ -1,14 +1,10 @@
-﻿var el = this.document.getElementById("content");
+﻿//import { Subscription } from 'rxjs/Subscription';  // ES6 import
 
-class User {
-    name: string;
-    age: number;
-    constructor(_name: string, _age: number) {
-
-        this.name = _name;
-        this.age = _age;
+class Foo {  // ES6 Class
+    sayHi(name) {
+        return `Hi ${name}, welcome to Salsa!`;  // ES6 template string
     }
-} 
-var tom: User = new User("Роман", 31);
-//el.innerHTML =
-console.log("Имя: " + tom.name + " возраст: " + tom.age);
+}
+
+export let sqr = x => x * x;  //ES6 export, let, and arrow function
+//export default Subscription;  //ES6 default export
